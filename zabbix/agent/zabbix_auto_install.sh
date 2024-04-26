@@ -95,4 +95,13 @@ echo -e "如果需要使用netstat命令获取监控数据，请手动执行：\
 
 # 创建 script 目录
 mkdir /etc/zabbix/zabbix_agentd.d/script
-chown zabbix.zabbix /etc/zabbix/zabbix_agentd.d/script
+
+curl -s https://raw.githubusercontent.com/xcojeff/nowoferry/master/zabbix/agent/custom.conf -o /etc/zabbix/zabbix_agentd.d/custom.conf
+curl -s https://raw.githubusercontent.com/xcojeff/nowoferry/master/zabbix/agent/script/disc_process.sh -o /etc/zabbix/zabbix_agentd.d/script/disc_process.sh
+curl -s https://raw.githubusercontent.com/xcojeff/nowoferry/master/zabbix/agent/script/process_monitor.sh -o /etc/zabbix/zabbix_agentd.d/script/process_monitor.sh
+curl -s https://raw.githubusercontent.com/xcojeff/nowoferry/master/zabbix/agent/script/check_tcp.sh -o /etc/zabbix/zabbix_agentd.d/script/check_tcp.sh
+curl -s https://raw.githubusercontent.com/xcojeff/nowoferry/master/zabbix/agent/script/disc_port.sh -o /etc/zabbix/zabbix_agentd.d/script/disc_port.sh
+touch /etc/zabbix/zabbix_agentd.d/script/processlist
+
+chown zabbix.zabbix /etc/zabbix/zabbix_agentd.d/script -R
+chmod +x /etc/zabbix/zabbix_agentd.d/script/*.sh
